@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://ultra-ui.com"
+    "url": "https://github.com/ultra-ui/ultra-ui"
   },
   "bugs": {
-    "url": "https://ultra-ui.com/issues"
+    "url": "https://github.com/ultra-ui/ultra-ui/issues"
   },
   "scripts": {
     "build": "rollup -c"

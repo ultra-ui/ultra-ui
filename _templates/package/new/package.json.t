@@ -19,10 +19,10 @@ to: src/<%= name %>/package.json
   },
   "repository": {
     "type": "git",
-    "url": "https://ultra-ui.com"
+    "url": "https://github.com/ultra-ui/ultra-ui"
   },
   "bugs": {
-    "url": "https://ultra-ui.com"
+    "url": "https://github.com/ultra-ui/ultra-ui"
   },
   "scripts": {
     "build": "rollup -c"
