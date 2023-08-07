@@ -2,12 +2,12 @@
 
 ### Install
 
-`npm i @ultra-ui/control` or `yarn add @ultra-ui/control`
+`npm i @ultra-ui/react` or `yarn add @ultra-ui/react`
 
 ### Usage
 
 ```
-import { Component } from "@ultra-ui/control"
+import { Component } from "@ultra-ui/react"
 
 <Component />
 
