@@ -1,6 +1,6 @@
 import { UploadBeforeHandler, UploadBeforeReturn } from 'suneditor-react/dist/types/upload';
 
-export interface HtmlEditorProps {
+export interface EditorProps {
   height?: string;
   wrapperClassName?: string;
   defaultHtml?: string;
@@ -11,7 +11,7 @@ export interface HtmlEditorProps {
   onImageUploadBefore?: (files: File[], info: object, uploadHandler: UploadBeforeHandler) => UploadBeforeReturn;
 }
 
-export interface HtmlEditorRef {
+export interface EditorRef {
   getHtml?: () => string;
   getContent?: () => string;
   setHtml?: (html: string) => void;

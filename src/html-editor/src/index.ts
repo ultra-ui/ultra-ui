@@ -1,3 +1,3 @@
-import HtmlEditor from './html-editor';
+import Editor from './html-editor';
 
-export { HtmlEditor };
+export { Editor };

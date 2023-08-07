@@ -1,7 +1,7 @@
 {
-  "name": "@ultra-ui/html-editor",
-  "version": "0.0.6",
-  "description": "Ultra UI HtmlEditor",
+  "name": "@ultra-ui/editor",
+  "version": "0.0.1",
+  "description": "Ultra UI Editor",
   "author": "Ultra UI",
   "type": "module",
   "license": "MIT",

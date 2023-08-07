@@ -4,9 +4,9 @@ import { UploadBeforeHandler } from 'suneditor-react/dist/types/upload';
 import 'suneditor/dist/css/suneditor.min.css';
 import SunEditorRef from 'suneditor/src/lib/core';
 import { BUTTON_LIST } from './html-editor.data';
-import { HtmlEditorProps, HtmlEditorRef } from './html-editor.type';
+import { EditorProps, EditorRef } from './html-editor.type';
 
-const HtmlEditor: React.FC = forwardRef((props: HtmlEditorProps, ref: Ref<HtmlEditorRef>) => {
+const HtmlEditor: React.FC = forwardRef((props: EditorProps, ref: Ref<EditorRef>) => {
   const {
     onChange,
     onChangeContent,
@@ -63,7 +63,7 @@ const HtmlEditor: React.FC = forwardRef((props: HtmlEditorProps, ref: Ref<HtmlEd
   }));
 
   useEffect(() => {
-    if (defaultHtml) {
+    if (typeof defaultHtml !== 'undefined') {
       setHtml(defaultHtml);
     }
   }, [defaultHtml]);

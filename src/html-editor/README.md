@@ -1,15 +1,15 @@
-## `Ultra UI HtmlEditor`
+## `Ultra UI Editor`
 
 ### Install
 
-`npm i @ultra-ui/html-editor` or `yarn add @ultra-ui/html-editor`
+`npm i @ultra-ui/editor` or `yarn add @ultra-ui/editor`
 
 ### Usage
 
 ```
-import { HtmlEditor } from "@ultra-ui/html-editor"
+import { Editor } from "@ultra-ui/editor"
 
-<HtmlEditor />
+<Editor />
 
 ```
 
