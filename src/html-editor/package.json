@@ -1,0 +1,35 @@
+{
+  "name": "@ultra-ui/html-editor",
+  "version": "0.0.6",
+  "description": "Ultra UI HtmlEditor",
+  "author": "Ultra UI",
+  "type": "module",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ultra-ui.com"
+  },
+  "bugs": {
+    "url": "https://ultra-ui.com/issues"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "suneditor": "^2.45.1",
+    "suneditor-react": "^3.6.1"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

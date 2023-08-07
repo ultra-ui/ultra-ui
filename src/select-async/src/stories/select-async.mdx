@@ -1,0 +1,115 @@
+import { Meta } from '@storybook/blocks';
+import CodeBlock from '../../../component/code-block';
+
+<Meta title="Ultra UI/Select/SelectAsync/Example" />
+
+# @ultra-ui/select-async
+
+### 1. Default
+
+<CodeBlock code={`import { SelectAsync } from "@ultra-ui/select-async";
+
+const App = () => {
+const loadOptions = useCallback(async (search, loadedOptions, data) => {
+const page = data.page || 1;
+const size = 10;
+const params = { page, size, keyword: search };
+const options = await API.request({
+url: '/users',
+params
+});
+
+    	if (!Array.isArray(options) || !options.length) {
+    		return {
+    			options: [],
+    			hasMore: false
+    		};
+    	}
+
+    	return {
+    		options,
+    		hasMore: options.length === size,
+    		additional: {
+    			page: page + 1
+    		}
+    	};
+    }, []);
+
+    return (
+    	<SelectAsync
+    		placeholder="Chọn..."
+    		loadOptions={loadOptions}
+    		isMulti
+    		allowClear
+    		showSearch
+    		onChange={data => {
+    			console.log(data)
+    		}}
+    	/>
+    )
+
+}
+
+export default App;`}
+/>
+
+### 2. Ref
+
+<CodeBlock code={`import { SelectAsync } from "@ultra-ui/select-async";
+
+const App = () => {
+const selectRef = useRef();
+
+    const loadOptions = useCallback(async (search, loadedOptions, data) => {
+    	const page = data.page || 1;
+    	const size = 10;
+    	const params = { page, size, keyword: search };
+    	const options = await API.request({
+    		url: '/users',
+    		params
+    	});
+
+    	if (!Array.isArray(options) || !options.length) {
+    		return {
+    			options: [],
+    			hasMore: false
+    		};
+    	}
+
+    	return {
+    		options,
+    		hasMore: options.length === size,
+    		additional: {
+    			page: page + 1
+    		}
+    	};
+    }, []);
+
+    useEffect(() => {
+    	// get value
+    	const data = selectRef.current.get();
+
+    	// set value
+    	selectRef.current.set(value);
+    }, [])
+
+    return (
+    	<SelectAsync
+    		ref={selectRef}
+    		loadOptions={loadOptions}
+    		placeholder="Chọn..."
+    		isMulti
+    		allowClear
+    		showSearch
+    		onChange={data => {
+    			console.log(data)
+    		}}
+    	/>
+    )
+
+}
+
+export default App;`}
+/
+
+>

@@ -1,0 +1,32 @@
+{
+  "name": "@ultra-ui/api",
+  "version": "0.0.1",
+  "description": "Ultra UI util Api",
+  "author": "Nguyen Hong Duc",
+  "type": "module",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ultra-ui.com"
+  },
+  "bugs": {
+    "url": "https://ultra-ui.com/issues"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "axios": "^1.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

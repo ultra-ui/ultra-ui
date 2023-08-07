@@ -1,0 +1,236 @@
+import { Meta } from '@storybook/blocks';
+import CodeBlock from '../../../component/code-block';
+
+<Meta title="Ultra UI/Sorl utils/Example" />
+
+# @ultra-ui/solr
+
+### 0. Config provider (with hook upload file)
+
+<p style={{ fontSize: 16, marginLeft: 40 }}>
+  <b>@ultra-ui/solr</b> requires pre-installing 3 libraries <b>"@tanstack/react-query"</b>, <b>"@ultra-ui/api"</b> and{' '}
+  <b>"@ultra-ui/toast"</b> (peerDependencies)
+</p>
+
+<CodeBlock code={`// App.js
+import { SolrProvider } from "@ultra-ui/solr";
+
+const App = () => {
+return (
+
+<SolrProvider config={{ prefixCdnURL: 'https://cdn.domain.com/upload' }}>
+  <Component />
+</SolrProvider>
+) }
+
+export default App;`}
+/>
+
+### 1. useCreate
+
+<CodeBlock code={`import { useCreate } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, mutateAsync, error, isLoading} = useCreate();
+const request = {
+url: "/solr/user/update",
+params: {},
+onSuccess: () => {}, // optional
+onError: (e) => {}, // optional
+showToast: true, // optional - default true
+successMessage: "Tạo người dùng thành công", // optional
+errorMessage: "Tạo người dùng thất bại", // optional
+method?: 'POST' | 'POST_MULTI', // optional - default 'POST'
+}
+return (
+
+<button onClick={() => mutate(request)}>Create</button>) }
+
+export default App;`}
+/>
+
+### 2. useUpdate
+
+<CodeBlock code={`import { useUpdate } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, mutateAsync, error, isLoading} = useUpdate();
+const request = {
+url: "/solr/user/update",
+params: {},
+onSuccess: () => {}, // optional
+onError: (e) => {}, // optional
+showToast: true, // optional - default true
+successMessage: "Cập nhật người dùng thành công", // optional
+errorMessage: "Cập nhật người dùng thất bại", // optional
+method?: 'PUT' | 'PUT_MULTI', // optional - default 'PUT'
+}
+return (
+
+<button onClick={() => mutate(request)}>Update</button>) }
+
+export default App;`}
+/>
+
+### 3. useDelete
+
+<CodeBlock code={`import { useDelete } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, mutateAsync, error, isLoading} = useDelete();
+const request = {
+url: "/solr/user/update",
+id: "id",
+onSuccess: () => {}, // optional
+onError: (e) => {}, // optional
+showToast: true, // optional - default true
+successMessage: "Xoá người dùng thành công", // optional
+errorMessage: "Xoá người dùng thất bại", // optional
+}
+return (
+
+<button onClick={() => mutate(request)}>Delete</button>) }
+
+export default App;`}
+/>
+
+### 4. useQueryDetail
+
+<CodeBlock code={`import { useQueryDetail } from "@ultra-ui/solr";
+
+const App = () => {
+const request = {
+queryKey: ['GET_USER_DETAIL', detailId],
+url: '/solr/user/select',
+id: detailId,
+errorMessage: 'Lấy thông tin người dùng thất bại',
+showErrorToast: true, // optional - default true
+enabled: !!detailId, // optional
+params: {} // optional
+}
+const {data, error, isLoading} = useQueryDetail(request);
+return <p>useQueryDetail</p>
+}
+
+export default App;`}
+/>
+
+### 5. useQueryList
+
+<CodeBlock code={`import { useQueryList } from "@ultra-ui/solr";
+
+const App = () => {
+const request = {
+queryKey: ['GET_LIST_USER'],
+url: '/solr/user/select',
+errorMessage: 'Lấy danh sách người dùng thất bại', // optional
+showErrorToast: true, // optional
+enabled: !!detailId, // optional
+params: {start: 1, row: 10} // optional
+}
+const {data, error, isLoading} = useQueryList(request);
+return <p>useQueryList</p>
+}
+
+export default App;`}
+/>
+
+### 6. useQueryMedia (by parentId)
+
+<CodeBlock code={`import { useQueryMedia } from "@ultra-ui/solr";
+
+const App = () => {
+const request = {
+queryKey: ['GET_MEDIA_LIST', parentId],
+parentId: 'parentId',
+parentField: 'parent_id', // optional - default 'parent_id'
+url: '/solr/media/select', // optional - default '/solr/media/select'
+errorMessage: 'Lấy thông tin media thất bại', // optional
+showErrorToast: true, // optional - default true
+enabled: !!parentId, // optional
+params: {start: 1, row: 10} // optional
+getAll?: true; // optional
+}
+const {data, error, isLoading} = useQueryMedia(request);
+return <p>useQueryMedia</p>
+}
+
+export default App;`}
+/>
+
+### 7. useCreateWithMedia
+
+<CodeBlock code={`import { useCreateWithMedia } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, error, isLoading} = useCreateWithMedia();
+const request = {
+params: {title: "test"},
+core: "user",
+fileData: [
+{ file: File, description: "File 1" },
+{ file: File, description: "File 2" },
+],
+timestamp: new Date().getTime(), // current timestamp (number)
+onSuccess: ({ urlFileAdds}) => {}, // optional
+onError: (error) => {}, // optional
+method: "POST", // optional - "POST" | "POST_MULTI" - default "POST"
+showToast: true, // optional - default true
+isCamelCase: false, // optional - default false - solr field camel case
+}
+return <button onClick={() => mutate(request)}>Create with media</button>
+}
+
+export default App;`}
+/>
+
+### 8. useUpdateWithMedia
+
+<CodeBlock code={`import { useUpdateWithMedia } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, error, isLoading} = useUpdateWithMedia();
+const request = {
+params: {id: "updateId", title: "test"},
+core: "user",
+fileData: {
+add: [
+{ file: File, description: "File add 1" },
+{ file: File, description: "File add 2" },
+],
+delete: [
+{ id: "id1", url: "url1" },
+{ id: "id2, url: "url2" },
+]
+},
+mediaParentId: "parentId", // optional - default params.id
+onSuccess: () => {}, // optional
+onError: (error) => {}, // optional
+method: "PUT", // optional - "PUT" | "PUT_MULTI" - default "PUT"
+showToast: true, // optional - default true
+isCamelCase: false, // optional - default false - solr field camel case
+}
+return <button onClick={() => mutate(request)}>Update with media</button>
+}
+
+export default App;`}
+/>
+
+### 9. useDeleteWithMedia
+
+<CodeBlock code={`import { useDeleteWithMedia } from "@ultra-ui/solr";
+
+const App = () => {
+const {mutate, error, isLoading} = useDeleteWithMedia();
+const request = {
+id: "deleteId",
+core: "user",
+onSuccess: () => {}, // optional
+onError: (error) => {}, // optional
+showToast: true, // optional - default true
+}
+return <button onClick={() => mutate(request)}>Delete with media</button>
+}
+
+export default App;`}
+/>

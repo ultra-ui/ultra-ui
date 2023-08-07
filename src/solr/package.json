@@ -1,0 +1,32 @@
+{
+  "name": "@ultra-ui/solr",
+  "version": "0.0.4",
+  "description": "Ultra UI Solr",
+  "author": "Ultra UI",
+  "type": "module",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ultra-ui.com"
+  },
+  "bugs": {
+    "url": "https://ultra-ui.com/issues"
+  },
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^4.32.1",
+    "@ultra-ui/toast": "^0.0.1",
+    "@ultra-ui/api": "^0.0.6"
+  }
+}

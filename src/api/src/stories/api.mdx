@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/blocks';
+import CodeBlock from '../../../component/code-block';
+
+<Meta title="Ultra UI/Api/Example" />
+
+# @ultra-ui/api
+
+### 0. Config provider
+
+<p style={{ fontSize: 16, marginLeft: 40 }}>
+  <b>@ultra-ui/api</b> requires pre-installing library <b>"axios"</b> (peerDependencies)
+</p>
+
+<CodeBlock code={`// App.js
+import { ApiProvider } from "@ultra-ui/api";
+
+const App = () => {
+const defaultConfig = {
+baseURL: 'https://',
+cdnURL: '',
+token: '', // jwt token
+solrToken: '', // solr token
+headers: {},
+}
+return (
+
+<ApiProvider config={defaultConfig}>
+  <Component />
+</ApiProvider>
+) }
+
+export default App;`}
+/>
+
+### 1. Default request
+
+<CodeBlock code={`import { API } from "@ultra-ui/api";
+
+API.request({
+url: "/users",
+method: "GET",
+params: {
+page: 1,
+size: 10
+},
+baseURL: "",
+headers: {},
+transformResponse: (response) => response, // optional
+transformError: (error) => error, // optional
+})
+// Promise`}
+/>
+
+### 2. Solr request
+
+<CodeBlock code={`import { API } from "@ultra-ui/api";
+
+API.solr({
+url: "/solr/user/select",
+method: "GET",
+params: {
+fq: "fullName:Haha"
+},
+baseURL: "",
+headers: {},
+transformResponse: (response) => response, // optional
+transformError: (error) => error, // optional
+})
+// Promise`}
+/>
+
+### 3. Upload file
+
+<CodeBlock code={`import { API } from "@ultra-ui/api";
+
+API.upload({
+url: "/media",
+file: File,
+headers: {},
+params: {},
+uploadFileType: 'form-data', // 'form-data' | 'binary'
+transformResponse: (response) => response, // optional
+transformError: (error) => error, // optional
+})
+// Promise`}
+/>

@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/blocks';
+import CodeBlock from '../../../component/code-block';
+
+<Meta title="Ultra UI/Param Url/Example" />
+
+# @ultra-ui/param-url
+
+### 0. Install
+
+<p style={{ fontSize: 16, marginLeft: 40 }}>
+  <b>@ultra-ui/param-url</b> requires pre-installing 2 libraries <b>"react-router-dom"</b> and <b>"query-string"</b>{' '}
+  (peerDependencies)
+</p>
+
+### 1. useParamsURL
+
+<CodeBlock code={`import { useParamsURL } from "@ultra-ui/param-url";
+
+const App = () => {
+const [params, setParams] = useParamsURL();
+console.log(params);
+return (
+
+<button onClick={() => setParams({ keyword: 'haha' })}>Set params</button>) }
+
+export default App;`}
+/>
+
+### 2. useGetParamsURL
+
+<CodeBlock code={`import { useGetParamsURL } from "@ultra-ui/param-url";
+
+const App = () => {
+const params = useGetParamsURL();
+console.log(params);
+return (
+
+<p>Get params url</p>) }
+
+export default App;`}
+/>
+
+### 3. useSetParamsURL
+
+<CodeBlock code={`import { useSetParamsURL } from "@ultra-ui/param-url";
+
+const App = () => {
+const setParams = useSetParamsURL();
+return (
+
+<button onClick={() => setParams({ keyword: 'haha' })}>Set params</button>) }
+
+export default App;`}
+/>
+
+### 4. useRemoveParamsURL
+
+<CodeBlock code={`import { useRemoveParamURL } from "@ultra-ui/param-url";
+
+const App = () => {
+const removeParam = useRemoveParamURL();
+console.log(params);
+return (
+
+<button onClick={() => removeParam('keyword')}>Remove param</button>) }
+
+export default App;`}
+/
+
+>

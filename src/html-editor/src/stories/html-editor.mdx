@@ -1,0 +1,103 @@
+import { Meta } from '@storybook/blocks';
+import CodeBlock from '../../../component/code-block';
+
+<Meta title="Ultra UI/HtmlEditor/Example" />
+
+# @ultra-ui/html-editor
+
+### 1. Default
+
+<CodeBlock code={`import { HtmlEditor } from "@ultra-ui/html-editor";
+
+const App = () => {
+return (
+
+<HtmlEditor
+  height={500}
+  defaultHtml="<p>Test</p>"
+  defaultStyle="font-size: 16px;"
+  onChange={(html) => {
+    console.log(html);
+  }}
+  onChangeContent={(content) => {
+    console.log(content);
+  }}
+  onImageUploadBefore={(files, info, uploadHandler) => {
+    API.upload({ files }).then((response) => {
+      const file = files[0];
+      const data = {
+        result: [
+          {
+            url: response.url,
+            name: file.name,
+            size: file.size
+          }
+        ]
+      };
+    });
+    return uploadHandler(data);
+  }}
+  buttonList={[
+    ['undo', 'redo'],
+    ['fontSize', 'formatBlock'],
+    ['paragraphStyle', 'blockquote'],
+    ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+    ['fontColor', 'hiliteColor', 'textStyle'],
+    ['removeFormat'],
+    ['outdent', 'indent'],
+    ['align', 'horizontalRule', 'list', 'lineHeight'],
+    ['table', 'link', 'image'],
+    ['fullScreen', 'showBlocks', 'codeView'],
+    ['preview', 'print']
+  ]}
+/>
+) }
+
+export default App;`}
+/>
+
+### 2. Ref
+
+<CodeBlock code={`import { HtmlEditor } from "@ultra-ui/html-editor";
+
+const App = () => {
+const editorRef = useRef()
+useEffect(() => {
+const html = editorRef.current.getHtml();
+const content = editorRef.current.getContent();
+// setHtml
+editorRef.current.setHtml("<p>Test</p>")
+}, [])
+return (
+
+<HtmlEditor
+  ref={editorRef}
+  height={500}
+  defaultHtml="<p>Test</p>"
+  defaultStyle="font-size: 16px;"
+  onChange={(html) => {
+    console.log(html);
+  }}
+  onChangeContent={(content) => {
+    console.log(content);
+  }}
+  onImageUploadBefore={(files, info, uploadHandler) => {
+    API.upload({ files }).then((response) => {
+      const file = files[0];
+      const data = {
+        result: [
+          {
+            url: response.url,
+            name: file.name,
+            size: file.size
+          }
+        ]
+      };
+    });
+    return uploadHandler(data);
+  }}
+/>
+) }
+
+export default App;`}
+/>
