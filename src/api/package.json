@@ -1,6 +1,6 @@
 {
   "name": "@ultra-ui/api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ultra UI util Api",
   "author": "Nguyen Hong Duc",
   "type": "module",

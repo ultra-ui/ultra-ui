@@ -22,6 +22,16 @@ export default [
         file: packageJson.module,
         format: 'esm',
         sourcemap: true
+      },
+      {
+        file: packageJson.main,
+        format: 'es',
+        sourcemap: true
+      },
+      {
+        file: packageJson.module,
+        format: 'es',
+        sourcemap: true
       }
     ],
     plugins: [peerDepsExternal(), resolve(), commonjs(), typescript(), json()],
