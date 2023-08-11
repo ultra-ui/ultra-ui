@@ -16,7 +16,8 @@ export const API = {
       timeout = 10000,
       timeoutErrorMessage = 'Hệ thống không phản hồi. Vui lòng thử lại sau',
       transformResponse,
-      transformError
+      transformError,
+      internal
     } = config;
 
     const configHeader: AxiosHeaders = token ? { Authorization: `Bearer ${token}`, ...defaultHeader } : defaultHeader;
@@ -24,7 +25,7 @@ export const API = {
     const requestConfig: AxiosRequestConfig = {
       method,
       url,
-      baseURL: baseURL || defaultBaseURL,
+      baseURL: internal ? '' : baseURL || defaultBaseURL,
       headers: { 'Content-Type': 'application/json', ...configHeader, ...headers },
       timeout,
       timeoutErrorMessage
@@ -60,7 +61,8 @@ export const API = {
       timeout = 10000,
       timeoutErrorMessage = 'Hệ thống không phản hồi. Vui lòng thử lại sau',
       transformResponse,
-      transformError
+      transformError,
+      internal
     } = config;
 
     const configHeader: AxiosHeaders = solrToken
@@ -78,7 +80,7 @@ export const API = {
     const requestConfig: AxiosRequestConfig = {
       method: method === 'GET' ? 'GET' : 'POST',
       url: urlRequest,
-      baseURL: baseURL || defaultBaseURL,
+      baseURL: internal ? '' : baseURL || defaultBaseURL,
       headers: { 'Content-Type': 'application/json', ...configHeader, ...headers },
       timeout,
       timeoutErrorMessage
@@ -145,7 +147,8 @@ export const API = {
       timeoutErrorMessage = 'Hệ thống không phản hồi. Vui lòng thử lại sau',
       transformError,
       transformResponse,
-      method = 'POST'
+      method = 'POST',
+      internal
     } = config;
 
     if (!file) {
@@ -162,7 +165,7 @@ export const API = {
       params,
       timeout,
       timeoutErrorMessage,
-      baseURL: defaultCdnURL,
+      baseURL: internal ? '' : defaultCdnURL,
       url
     };
 

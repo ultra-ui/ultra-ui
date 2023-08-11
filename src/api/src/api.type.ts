@@ -10,6 +10,7 @@ export interface ApiRequestConfig {
   timeoutErrorMessage?: string;
   transformResponse?: (response: AxiosResponse) => any;
   transformError?: (error: AxiosError) => any;
+  internal?: boolean;
 }
 
 export interface ApiUploadConfig {
@@ -23,6 +24,7 @@ export interface ApiUploadConfig {
   uploadFileType?: 'form-data' | 'binary';
   transformResponse?: (response: AxiosResponse) => any;
   transformError?: (error: AxiosError) => any;
+  internal?: boolean;
 }
 
 export interface ApiContextType {
